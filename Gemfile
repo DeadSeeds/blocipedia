@@ -9,7 +9,6 @@
 
  group :development do
    gem 'sqlite3'
-   gem 'devise'
  end
 
  group :development, :test do
@@ -30,3 +29,7 @@
  gem 'turbolinks'
  #Bootstrap
  gem 'bootstrap-sass'
+ # Figaro for environment variables
+ gem 'figaro', '1.0'
+
+ gem 'devise'
