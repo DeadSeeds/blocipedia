@@ -1,5 +1,4 @@
 <center><h1>Blocipedia — Look stuff up!</h1></center>
-<!-- <p>Find me in app/views/welcome/index.html.erb</p> -->
 
 <div class="row">
   <div class="col-md-8">
@@ -7,11 +6,8 @@
     <div class="media">
       <div class="media-body">
         <h4 class="media-heading">
-          <%= link_to wiki.name, topic %>
+          <%= link_to wiki.title, wiki %>
         </h4>
-        <small>
-          <%= wiki.body %>
-        </small>
       </div>
     </div>
     <% end %>
