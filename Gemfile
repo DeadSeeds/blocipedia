@@ -36,3 +36,5 @@
  gem 'figaro', '1.0'
 
  gem 'devise'
+ # Pundit for user roles
+ gem 'pundit'
