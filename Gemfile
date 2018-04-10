@@ -34,7 +34,9 @@
  gem 'bootstrap-sass'
  # Figaro for environment variables
  gem 'figaro', '1.0'
-
+ # Devise for user authentication
  gem 'devise'
- # Pundit for user roles
+ # Pundit for user roles and authorization
  gem 'pundit'
+ # Faker to populate the database with fake data
+ gem 'faker'

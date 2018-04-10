@@ -32,6 +32,21 @@ module RandomData
   def self.random_word
     letters = ('a'..'z').to_a
     letters.shuffle!
-    letters[0,rand(3..8)].join
+    letters[3,rand(3..8)].join
   end
+
+  def self.random_number
+    numbers = rand(6..9)
+    "#{numbers}"
+  end
+
+  def self.true_or_false
+    coin_flip = rand(0..1)
+    if coin_flip.even?
+      true
+    else
+      false
+    end
+  end
+
 end
