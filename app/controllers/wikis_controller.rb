@@ -1,23 +1,32 @@
 class WikisController < ApplicationController
+
+  before_action :authenticate_user!, :except => [:show, :index]
+
+
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki.all)
+    authorize @wikis
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = "Post was saved."

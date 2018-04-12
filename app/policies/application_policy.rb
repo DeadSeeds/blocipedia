@@ -19,7 +19,7 @@ class ApplicationPolicy
   end
 
   def new?
-    create?
+    user.admin?
   end
 
   def update?
