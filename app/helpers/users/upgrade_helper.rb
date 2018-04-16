@@ -1,0 +1,2 @@
+module Users::UpgradeHelper
+end

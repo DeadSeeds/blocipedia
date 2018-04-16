@@ -40,3 +40,5 @@
  gem 'pundit'
  # Faker to populate the database with fake data
  gem 'faker'
+ # Stripe for charging users
+ gem 'stripe'

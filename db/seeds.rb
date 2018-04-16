@@ -2,11 +2,10 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 require 'faker'
-require 'random_data'
 
 10.times do
   User.create!(
-    email:      RandomData.random_email,
+    email:      Faker::Hipster.words(2).join + '@' + Faker::Hipster.words(1).join + ".com",
     password:   Faker::Hipster.words(3).join,
     role:       'standard'
 
@@ -16,9 +15,10 @@ users = User.all
 
 20.times do
   Wiki.create!(
-    title:     Faker::Hipster.sentence(RandomData.random_number.to_i),
-    body:      Faker::Hipster.paragraph(RandomData.random_number.to_i),
-    private:   RandomData.true_or_false
+    title:     Faker::Hipster.sentence(1),
+    body:      Faker::Hipster.paragraph(rand(20..40)),
+    private:   false,
+    user:      User.all.sample
 
   )
 end

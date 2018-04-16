@@ -13,6 +13,15 @@ class User < ActiveRecord::Base
     self.role ||= :standard
   end
 
+  def downgrade_user
+    self.role = :standard
+  end
+
+  def upgrade_user
+    self.role = :premium
+  end
+  
+
   enum role: [:admin, :standard, :premium]
 
 end
