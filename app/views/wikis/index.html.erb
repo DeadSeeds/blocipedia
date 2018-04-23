@@ -3,10 +3,17 @@
   <div class="row">
     <div class="col-md-11">
       <%= link_to "New Wiki", new_wiki_path, class: 'btn-group btn-success btn-sm' %>
+      <% if current_user %>
+        <% if current_user.role == "standard" %>
+          <%= link_to "Upgrade account", { controller: 'users/upgrade', user_id: @user.id, action: :index }, class: 'btn btn-info btn-sm' %>
+        <% elsif current_user.role == "premium" %>
+            <%= link_to "Downgrade account", { controller: 'users/downgrade', user_id: @user.id, action: :index }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="jumbotron">
-  <center><h1>Blocipedia — Look stuff up!</h1></center>
+    <center><h1>Blocipedia — Look stuff up!</h1></center>
   </div>
 
   <div class="row">

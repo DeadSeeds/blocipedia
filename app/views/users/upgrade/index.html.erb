@@ -10,11 +10,11 @@
         <li>Store information for later use</li>
         <li>Have a record of your thought process</li>
         <li>Keep track of your plan to take over the world</li>
+        <li>You currently have a <%= @role %> account</li>
       </ul>
   </div>
   <div class="row">
-    <%= link_to charges_path do %>
+    <%= form_tag charges_path  %>
       <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
-    <% end %>
   </div>
 </div>
