@@ -13,11 +13,7 @@ class ChargesController < ApplicationController
       :customer       => customer.id,
       :amount         => 1500,
       :description    => "Stripe customer - #{current_user.email} ",
-<<<<<<< HEAD
-      :receipt_email  => current_user.email,
-=======
       :receipt_email  => @user.email,
->>>>>>> Downgrade not working
       :currency       => 'usd'
     )
 
