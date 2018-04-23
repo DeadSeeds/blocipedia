@@ -1,7 +1,8 @@
 class ChargesController < ApplicationController
   def create
     # Amount in cents
-    @amount = params([:amount])
+    # @amount = params([:amount])
+    @user = current_user
 
     customer = Stripe::Customer.create(
       :email => current_user.email,
@@ -9,13 +10,16 @@ class ChargesController < ApplicationController
     )
 
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => 1500,
-      :description => "Stripe customer - #{current_user.email} ",
-      :currency    => 'usd'
+      :customer       => customer.id,
+      :amount         => 1500,
+      :description    => "Stripe customer - #{current_user.email} ",
+      :receipt_email  => current_user.email,
+      :currency       => 'usd'
     )
 
-    flash[:notice] = "Thank you for your payment!"
+    flash[:notice] = "Thank you for your payment!  Your account has been upgraded."
+    @user.role = "premium"
+    @user.save
     redirect_to wikis_path
 
   rescue Stripe::CardError => e
