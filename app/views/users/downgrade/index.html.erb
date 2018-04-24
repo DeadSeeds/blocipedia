@@ -13,7 +13,11 @@
       </ul>
   </div>
   <div class="row">
+<<<<<<< HEAD
         <%= form_tag  %>
     <%= link_to "Downgrade Account", { controller: 'users/downgrade', action: :downgrade }, class: 'btn btn-danger btn-lg' %>
+=======
+    <%= link_to "Downgrade account", { controller: 'users/downgrade', user_id: @user.id, action: :create }, method: :post, class: 'btn btn-danger btn-lg' %>
+>>>>>>> Downgrade not working
   </div>
 </div>
