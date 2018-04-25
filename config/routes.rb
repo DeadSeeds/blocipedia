@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/upgrade', controller: 'users/upgrade', action: :index
   get 'users/:user_id/downgrade', controller: 'users/downgrade', action: :index
   post 'users/:user_id/downgrade', controller: 'users/downgrade', action: :create
+  get 'users/:user_id/downgrade', controller: 'users/downgrade', action: :new
 
   # get 'users/:user_id/downgrade/confirm', to: 'users/downgrade#downgrade', as: 'downgrade_button'
   # resources :users do

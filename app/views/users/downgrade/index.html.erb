@@ -7,12 +7,20 @@
   <div class="row">
     <h4>You can downgrade your account from this page.</h4>
       <ul>
-        <li>You credit card will no longer be charged after the current billing cycle</li>
+        <li>Your credit card will no longer be charged after the current billing cycle</li>
         <li>You will no longer be able to create private wikis</li>
+        <li><strong>ALL PRIVATE WIKIS WILL BE MARKED PUBLIC</strong></li>
         <li>You currently have a <%= @role %> account.  Click Home above if you do not wish to downgrade.</li>
       </ul>
   </div>
   <div class="row">
-    <%= link_to "Downgrade account", { controller: 'users/downgrade', user_id: @user.id, action: :create }, method: :post, class: 'btn btn-danger btn-lg' %>
+    <%= link_to 'Downgrade', { controller: 'users/downgrade', user_id: @user.id, action: :new },  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-danger btn-lg'}  %>
+    <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= render partial: 'new' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

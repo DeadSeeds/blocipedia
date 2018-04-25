@@ -4,9 +4,11 @@ class WikisController < ApplicationController
 
 
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.where(private: false)
     @user = current_user
+    @wikis_priv = Wiki.where(private: true)
     authorize @wikis
+    authorize @wikis_priv
   end
 
   def show
@@ -41,7 +43,6 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wiki_params)
-
     authorize @wiki
 
     if @wiki.save

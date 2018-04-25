@@ -1,5 +1,12 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
 
-  after_initialize { self.private = false }
+  validates :title, length: { minimum: 3 }, presence: true
+  validates :body, length: { minimum: 5 }, presence: true
+  validates :user, presence: true
+
+  default_scope { order('updated_at DESC') }
+
+
+
 end

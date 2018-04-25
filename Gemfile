@@ -42,3 +42,5 @@
  gem 'faker'
  # Stripe for charging users
  gem 'stripe'
+ # For modals
+ gem 'popper_js'

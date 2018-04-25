@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container-fluid">
 
 
   <div class="row">
@@ -12,7 +12,9 @@
       <% end %>
     </div>
   </div>
-  <h1><%= @wiki.title %></h1>
+  <div class="jumbotron">
+    <center><h2><%= @wiki.title %></h2></center>
+  </div>
   <div class="row">
     <div class="col-md-11">
       <p><%= simple_format(@wiki.body) %></p>

@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel"><strong>Warning!</strong></h4>
+</div>
+<div class="modal-body">
+  If you downgrade your account, all private wikis you've created will become public.
+</div>
+<div class="modal-footer">
+  <%= link_to "Downgrade account", { controller: 'users/downgrade', user_id: @user.id, action: :create }, method: :post, class: 'btn btn-danger btn-lg' %>
+</div>
