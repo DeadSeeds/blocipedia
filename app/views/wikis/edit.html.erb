@@ -3,7 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-11">
-      <p>Enter information below:</p>
+      <h4><strong><p>You can use markdown to jazz up your submissions!</p></strong></h4>
+      <ul>
+        <li>Surround text with ==double equal signs== to <%= markdown("==highlight it==")%></li>
+        <li>Surround text with `backticks` to <%= markdown("`show code`")%></li>
+        <li>Surround text with ~~double tildes~~ for <%= markdown("~~strikethrough~~")%></li>
+        <li>And more!  Look <a href=https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>here.</a></li>
+      </ul>
+      <strong><p>Enter information below:</p></strong>
       <div class="col-md-11">
         <%= render partial: 'form', locals: { wiki: @wiki } %>
       </div>

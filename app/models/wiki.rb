@@ -7,6 +7,6 @@ class Wiki < ActiveRecord::Base
 
   default_scope { order('updated_at DESC') }
 
-
+  after_initialize { self.private = false }
 
 end

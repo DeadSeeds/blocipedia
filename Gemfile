@@ -30,7 +30,7 @@
  gem 'jquery-rails'
  # Turbolinks makes following links in your web application faster. Read more: https
  gem 'turbolinks'
- #Bootstrap
+ # Bootstrap
  gem 'bootstrap-sass'
  # Figaro for environment variables
  gem 'figaro', '1.0'
@@ -44,3 +44,5 @@
  gem 'stripe'
  # For modals
  gem 'popper_js'
+ # Redcarpet for markdown
+ gem 'redcarpet'
