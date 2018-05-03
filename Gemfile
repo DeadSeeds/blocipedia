@@ -17,6 +17,7 @@
    gem 'shoulda'
    gem 'factory_bot_rails', '~> 4.8.0'
    gem 'pry'
+   gem 'rails-erd'
  end
 
 

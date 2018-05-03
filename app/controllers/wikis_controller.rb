@@ -4,11 +4,10 @@ class WikisController < ApplicationController
 
 
   def index
-    @wikis = Wiki.where(private: false)
+    @wikis = policy_scope(Wiki)
     @user = current_user
-    @wikis_priv = Wiki.where(private: true)
-    authorize @wikis
-    authorize @wikis_priv
+    # @wikis_priv = Wiki.where(private: true)
+    # authorize @wikis_priv
   end
 
   def show
@@ -68,6 +67,9 @@ class WikisController < ApplicationController
     end
   end
 
+  # def collaborates_with(user)
+  #   user_ids.each do { |id| Wiki.create(user: User.find(params[:user_id]), wiki: @wiki) }
+  # end
 
 
   private

@@ -10,10 +10,17 @@
         <li>Surround text with ~~double tildes~~ for <%= markdown("~~strikethrough~~")%></li>
         <li>And more!  Look <a href=https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>here.</a></li>
       </ul>
-      <strong><p>Enter information below:</p></strong>
+
       <div class="col-md-11">
+      <strong><p>Enter information below:</p></strong>
         <%= render partial: 'form', locals: { wiki: @wiki } %>
+
       </div>
     </div>
+  </div>
+  <div class="row">
+    <% if current_user.role == "premium" %>
+      <%= link_to "Collaborations", wiki_collaborations_path(@wiki.id), class: 'btn btn-danger' %>
+    <% end %>
   </div>
 </div>

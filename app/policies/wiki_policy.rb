@@ -6,7 +6,6 @@ class WikiPolicy < ApplicationPolicy
       @post = post
   end
 
-
   def index?
     user.nil? || user.present?
   end
@@ -36,9 +35,13 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.present?
+    if post.private
+      user.admin? || user == post.user || post.collaborators.include?(user)
+    elsif post.private == false
+      user.present?
+    end
   end
-end
+
 
   class Scope
     attr_reader :user, :scope
@@ -49,10 +52,27 @@ end
     end
 
     def resolve
-      if user.present
-        scope.all
-      else
-        scope.all
+      wikis = []
+
+      if user.nil? || user.standard?
+        pub_wikis = scope.all
+        pub_wikis.each do |pubwiki|
+          if pubwiki.private == false || pubwiki.collaborators.include?(user)
+            wikis << pubwiki
+          end
+        end
+      elsif user.role == 'admin'
+        wikis = scope.all
+      elsif user.role == 'premium'
+        all_wikis = scope.all
+        all_wikis.each do |wiki|
+          if wiki.private == false || wiki.user == user || wiki.collaborators.include?(user)
+            wikis << wiki
+          end
+        end
       end
+      wikis
     end
   end
+
+end

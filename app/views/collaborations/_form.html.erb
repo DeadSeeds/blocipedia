@@ -1,0 +1,23 @@
+<%= form_for wiki do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, rows: 16, class: 'form-control', placeholder: "Enter wiki text" %>
+  </div>
+  <div class="form-group">
+      <% if current_user.role == "premium" || current_user.role == "admin" %>
+        <%= f.label :private, class: 'checkbox' do %>
+          <%= f.check_box :private %> Private wiki?
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+    <%= link_to "Cancel", wikis_path, class: 'btn btn-info' %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,17 @@
+<h1>Collaboration</h1>
+
+<div class="row">
+  <div class="col-md-11">
+    <h4><strong><p>Add collaborators to the wiki:</p></strong></h4>
+    <% form_for @wiki do |f| %>
+    <div class="form_group">
+      <% f.label :collaborators %>
+      <%= select_tag "users", options_from_collection_for_select(@users, "id", "email"), multiple: true %>
+      <% end %>
+    </div>
+    <strong><p>Enter information below:</p></strong>
+    <div class="col-md-11">
+      <%= render partial: 'form', locals: { wiki: @wiki } %>
+    </div>
+  </div>
+</div>

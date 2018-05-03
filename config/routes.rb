@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborations, only: [:index, :create, :destroy]
+  end
+
   resources :charges, only: [:new, :create]
+
 
   get 'wikis/index'
   root 'wikis#index'
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/downgrade', controller: 'users/downgrade', action: :index
   post 'users/:user_id/downgrade', controller: 'users/downgrade', action: :create
   get 'users/:user_id/downgrade', controller: 'users/downgrade', action: :new
+
 
   # get 'users/:user_id/downgrade/confirm', to: 'users/downgrade#downgrade', as: 'downgrade_button'
   # resources :users do

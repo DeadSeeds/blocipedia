@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-11">
+    <%= link_to "Home", wikis_path, class: 'btn btn-info btn-sm' %>
+  </div>
+</div>
+
+<h1>Collaborations</h1>
+
+<% @wiki.collaborations.each do |collaboration| %>
+  <%= collaboration.user.email %>
+  <%= link_to "X", wiki_collaboration_path(collaboration.wiki, collaboration), method: :delete %>
+<% end %>
+
+<div class="row">
+
+    <h4><strong><p>Add collaborator to the wiki:</p></strong></h4>
+    <%= form_for [@wiki, @wiki.collaborations.new] do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= select "collaboration", "user_id", User.pluck(:email, :id) %>
+
+        <%= f.submit "Save", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+</div>
